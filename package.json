@@ -1,0 +1,28 @@
+{
+  "name": "fend-weather-journal-app",
+  "version": "1.0.0",
+  "description": "Asynchronous web app using APIs and user data to dynamically update the UI for a Weather Journal App",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulmreese/fend-weather-journal-app.git"
+  },
+  "author": "Paul M. Reese",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulmreese/fend-weather-journal-app/issues"
+  },
+  "homepage": "https://github.com/paulmreese/fend-weather-journal-app#readme",
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
