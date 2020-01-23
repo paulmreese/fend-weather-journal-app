@@ -5,8 +5,10 @@ zipCode = document.getElementById('zip');
 journalFeelings = document.getElementById('feelings');
 submitButton = document.getElementById('generate');
 
-//Format today's date for journal entries
-currentDate =
+// Format today's date for journal entries
+// Create a new date instance dynamically with JS
+let d = new Date();
+let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 
 //setup the variables in the .env file
@@ -30,7 +32,7 @@ submitButton.addEventListener("submit", handleSubmit);
 const handleSubmit = async (e) => {
     e.preventDefault()
     getWeatherData(apiAddress, zipCode, apiKey)
-    .then(data => saveDataToSever(data, currentDate, journalFeelings.value))
+    .then(data => saveDataToSever(data, newDate, journalFeelings.value))
     .then(updateClientFromServer());
 }
 

@@ -21,7 +21,8 @@ app.use(cors());
 
 
 // Initialize the main project folder
-app.use(express.static(__dirname));
+app.use(express.static('client'));
+console.log(__dirname);
 
 // Spin up the server
 // Callback to debug
@@ -31,7 +32,7 @@ app.listen(3000, function () {
 
 //
 app.get('/', function (req, res) {
-    res.sendFile('/website/index.html')
+    res.sendFile('client/index.html')
 })
 
 // Callback function to complete GET '/all'
