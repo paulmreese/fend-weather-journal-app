@@ -31,7 +31,7 @@ app.listen(3000, function () {
 
 //
 app.get('/', function (req, res) {
-    res.sendFile('/../website/index.html')
+    res.sendFile('/website/index.html')
 })
 
 // Callback function to complete GET '/all'
