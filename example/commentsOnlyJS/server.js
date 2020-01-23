@@ -21,25 +21,25 @@ app.use(cors());
 
 
 // Initialize the main project folder
-app.use(express.static(''));
+app.use(express.static(__dirname));
 
 // Spin up the server
 // Callback to debug
 app.listen(3000, function () {
-    console.log('Listening on port 8080!')
+    console.log('Listening on port 3000!')
 });
+
+// Callback function to complete GET '/all'
+const getProjectData = (req, res) => {
+    return res.status(200).send(projectData)
+}
 
 // Initialize all route with a callback function
 app.get('/all', getProjectData)
 
-// Callback function to complete GET '/all'
-getProjectData = (req, res) => {
-    return res.status(200).send(projectData)
-}
-
 // Post Route
 app.post('/all', (req, res) => {
-    { temp, date, userResponse } = req.body
+    const { temp, date, userResponse } = req.body
     projectData[date] = { temp, userResponse }
     res.status(200).send()
 })
