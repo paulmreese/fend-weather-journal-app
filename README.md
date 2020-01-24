@@ -18,7 +18,7 @@ npm install
 to download all required project dependencies. Now, you can start the server with the command
 
 ```
-npm start
+node server.js
 ```
 
 You should receive a confirmatory log on the command line that the app is listening!
