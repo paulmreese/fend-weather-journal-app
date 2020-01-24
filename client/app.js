@@ -66,8 +66,9 @@ const saveDataToServer = async (path, data) => {
 /* Function to GET Project Data */
 const retrieveDataFromServer = async (path) => {
     try {
-        await fetch(path)
-        .then(res => res.json());
+        let res = await fetch(path);
+        let data = await res.json();
+        return data
     } catch (error) {
         throw error
     }
@@ -82,19 +83,22 @@ const updateClient = (temp, date, userResponse) => {
 
 const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-        getWeatherData(apiAddress, zipCode, apiKey)
-        .then(temp => formatData(temp))
-        .then(data => saveDataToServer(localEndpoint, data))
-        /* I'm currently using the results of the data being saved directly to
-         * update the client's view, which precludes the need to access the
-         * express server with another fetch using retrieveDataFromServer()
-         */
-        .then(({temp, date, userResponse}) => {
-            updateClient(temp, date, userResponse)
-        });
-    } catch (error) {
-      console.error(error)
+    if (zipCode != '') {
+        try {
+            getWeatherData(apiAddress, zipCode, apiKey)
+            .then(temp => formatData(temp))
+            .then(data => saveDataToServer(localEndpoint, data))
+            .then(() => retrieveDataFromServer(localEndpoint))
+            .then(projectData => {
+                const temp = projectData[newDate].temp;
+                const userResponse = projectData[newDate].userResponse;
+                updateClient(temp, newDate, userResponse)
+            });
+        } catch (error) {
+          console.error(error)
+        }
+    } else {
+        alert('Please enter a valid zip code!')
     }
 }
 
