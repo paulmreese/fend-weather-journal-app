@@ -22,7 +22,6 @@ app.use(cors());
 
 // Initialize the main project folder
 app.use(express.static('client'));
-console.log(__dirname);
 
 // Spin up the server
 // Callback to debug

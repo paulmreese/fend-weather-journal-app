@@ -11,7 +11,6 @@ entryContent = document.getElementById('content');
 
 // Format today's date for journal entries
 let d = new Date();
-console.log(d.getMonth() + 1);
 let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
@@ -35,7 +34,6 @@ const getWeatherData = async (apiAddress, zipCode, apiKey) => {
         let res = await fetch(`${apiAddress}weather?zip=${zipCode.value}` +
                               `&units=imperial&appid=${apiKey}`)
         let data = await res.json()
-        console.log(data)
         return data.main.temp
     } catch (error) {
         throw error
@@ -74,7 +72,6 @@ const updateClient = (temp, date, userResponse) => {
 
 const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Hey')
     try {
         getWeatherData(apiAddress, zipCode, apiKey)
         .then(temp => formatData(temp))
