@@ -11,7 +11,8 @@ entryContent = document.getElementById('content');
 
 // Format today's date for journal entries
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+console.log(d.getMonth() + 1);
+let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
 const apiKey = '07783588e0eda68834adb6ec91f11719';
@@ -82,7 +83,7 @@ const handleSubmit = async (e) => {
             updateClient(temp, date, userResponse);
         });
     } catch (error) {
-      throw error
+      console.error(error)
     }
 }
 
